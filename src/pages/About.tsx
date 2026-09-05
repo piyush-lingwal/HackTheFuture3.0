@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { event } from '../data/event'
@@ -9,6 +9,7 @@ import {
   Award, Eye, Calendar, MapPin
 } from 'lucide-react'
 import mascotAbout from '../../Mascots Variations/About.webp'
+import { enter, staggerReveal, reveal } from '../utils/anime-utils'
 
 // Previous year HTF 2.0 images
 import htf21 from '../../Website Screens/prevYrImage/htf21.webp'
@@ -128,6 +129,7 @@ const filterTabs = [
 
 /* ── component ── */
 export function AboutPage() {
+  const pageRef = useRef<HTMLElement>(null)
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
@@ -167,8 +169,59 @@ export function AboutPage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [lightboxIndex, closeLightbox, nextImage, prevImage])
 
+  // ── Anime.js animations ──────────────────────────────────────────────
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance (immediate)
+    enter(Array.from(el.querySelectorAll('.ab-hero-copy > *')))
+    enter([el.querySelector('.ab-hero-visual')!].filter(Boolean), { y: 0, x: 44, duration: 900, delay: 200 })
+
+    // Features bar
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.ab-feat')),
+      { y: 36, stagger: 90 }
+    ))
+
+    // Values grid
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.ab-val')),
+      { y: 38, stagger: 80 }
+    ))
+
+    // Glance stats
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.ab-glance-stat')),
+      { y: 28, stagger: 70 }
+    ))
+
+    // Flashback section header
+    push(reveal(el.querySelector('.ab-flashback-title') as Element, { y: 32 }))
+    push(reveal(el.querySelector('.ab-flashback-desc') as Element, { y: 24, delay: 80 }))
+
+    // Past stat cards
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.ab-past-stat-card')),
+      { y: 32, stagger: 80 }
+    ))
+
+    // Gallery bento cards
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.ab-gallery-card')),
+      { y: 36, stagger: 65, threshold: 0.06 }
+    ))
+
+    // Footer callout
+    push(reveal(el.querySelector('.ab-flashback-footer-box') as Element, { y: 28 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
+
   return (
-    <main className="ab-page">
+    <main className="ab-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}

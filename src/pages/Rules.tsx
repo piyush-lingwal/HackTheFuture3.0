@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import {
@@ -6,6 +6,7 @@ import {
   CheckCircle2, ChevronDown, ArrowUpRight, Info, Home,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Rules.webp'
+import { enter, staggerReveal, reveal, staggerNow } from '../utils/anime-utils'
 
 /* ── Rules data ── */
 const sections = [
@@ -86,14 +87,57 @@ const sections = [
 ]
 
 export function RulesPage() {
+  const pageRef = useRef<HTMLElement>(null)
+  const isFirstRender = useRef(true)
   const [active, setActive] = useState(
   new URLSearchParams(window.location.search).get('tab') || 'eligibility'
 )
 
   const activeSection = sections.find(s => s.id === active)!
 
+  // Mount animations
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance
+    enter(Array.from(el.querySelectorAll('.rl-hero-copy > *')))
+    enter([el.querySelector('.rl-hero-visual')!].filter(Boolean), { y: 0, x: 50, duration: 900, delay: 240 })
+
+    // Tabs stagger in
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.rl-tab')),
+      { y: 20, stagger: 55, threshold: 0.05 }
+    ))
+
+    // Accordion list
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.rl-accordion')),
+      { y: 28, stagger: 70 }
+    ))
+
+    // Sidebar slides in from right
+    push(reveal(el.querySelector('.rl-sidebar') as Element, { x: 44, y: 0, duration: 820, threshold: 0.1 }))
+
+    // Warning bar
+    push(reveal(el.querySelector('.rl-warning') as Element, { y: 28 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
+
+  // Animate points list on tab change
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return }
+    const el = pageRef.current
+    if (!el) return
+    const points = Array.from(el.querySelectorAll('.rl-points li'))
+    staggerNow(points, { y: 18, stagger: 45 })
+  }, [active])
+
   return (
-    <main className="rl-page">
+    <main className="rl-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}
