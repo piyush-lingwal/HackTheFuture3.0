@@ -87,8 +87,7 @@ export function TracksPage() {
           <div className="tr-h1-line" />
           <p className="tr-hero-sub">
             5 specialized tracks. Real-world problems.<br />
-            Build with a product mindset and<br />
-            pitch your solution to expert judges.
+            Build with a product mindset and pitch your solution to expert judges.
           </p>
         </div>
 

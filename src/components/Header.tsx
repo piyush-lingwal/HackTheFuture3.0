@@ -5,10 +5,23 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const links = ['Home', 'About', 'Tracks', 'Prizes', 'Timeline', 'Rules', 'FAQ', 'Contact']
+const lightPages = ['/prizes', '/tracks', '/timeline', '/rules', '/faq', '/contact', '/problems']
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const isLightPage = lightPages.some(p => location.pathname.toLowerCase().startsWith(p))
+
+  // Track scroll for sticky cylindrical navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Close drawer on route change
   useEffect(() => { setOpen(false) }, [location])
@@ -21,7 +34,7 @@ export function Header() {
 
   return (
     <>
-      <header className="header">
+      <header className={`header ${scrolled ? 'header-scrolled' : ''} ${isLightPage ? 'header-theme-light' : ''}`}>
         <Link className="brand brand-image" to="/" aria-label="Hack the Future 3.0 home">
           <img src={logo} alt="Hack the Future 3.0" />
         </Link>

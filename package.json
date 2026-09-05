@@ -26,6 +26,7 @@
     "@types/animejs": "^3.1.13",
     "@types/node": "latest",
     "@types/react": "latest",
-    "@types/react-dom": "latest"
+    "@types/react-dom": "latest",
+    "sharp": "^0.35.4"
   }
 }

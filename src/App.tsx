@@ -1,8 +1,9 @@
 import { Header } from './components/Header'
+import { MatrixRain } from './components/MatrixRain'
 import { JourneyMap } from './components/JourneyMap'
 import { event } from './data/event'
 import mascot from '../Website Mascot.webp'
-import homeAboutImg from '../HomeAbout section.webp'
+import homeAboutImg from '../HomeAbout section.png'
 import navLogo from '../NavBar Logo.webp'
 import prizesMascot from '../Mascots Variations/Prize2 (3).webp'
 import trackMascot from '../Mascots Variations/trackhomepage.webp'
@@ -148,7 +149,10 @@ function CountdownBand() {
     <div className="hp-cd">
       <div className="hp-cd-box">
         <div className="hp-cd-meta">
-          <span className="hp-cd-eyebrow">HACKATHON BEGINS IN</span>
+          <span className="hp-cd-eyebrow">
+            <span className="hp-cd-live-dot" />
+            HACKATHON BEGINS IN
+          </span>
           <span className="hp-cd-date">25 – 26 SEP 2026 · DEHRADUN</span>
         </div>
         <div className="hp-cd-units">
@@ -298,6 +302,7 @@ export default function App() {
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="hero grid-bg">
+        <MatrixRain />
         <aside className="hero-rail" aria-label="Event information and social links">
           <span>HTF<br />/ 03</span><i></i>
           <div className="rail-event">
@@ -312,11 +317,21 @@ export default function App() {
         <div className="hero-dots" aria-hidden="true"></div>
         <div className="hero-number" aria-hidden="true">3.0</div>
         <div className="hero-copy">
-          <p className="eyebrow">Tulas ACM Student Chapter presents</p>
-          <h1>HACK<br />THE<br /><span className="hero-h1-gradient">FUTURE</span></h1>
+          <p className="eyebrow hero-top-caption">
+            <span className="hero-caption-pill">
+              <span className="hero-caption-dot" aria-hidden="true" />
+              ACM STUDENT CHAPTER TULAS UNIVERSITY PRESENTS
+            </span>
+          </p>
+
+          <h1>
+            HACK THE<br />
+            <span className="hero-bottom-line">
+              <span className="hero-h1-gradient">FUTURE</span> <em className="hero-30">3.0</em>
+            </span>
+          </h1>
           <div className="hero-tagline-row">
             <p className="tagline">PROJECT TO PRODUCT. <b>BUILD IT.</b></p>
-            <em className="hero-30">3.0</em>
           </div>
           <div className="event-meta">
             <span><CalendarDays />{event.dates}</span>
@@ -328,15 +343,6 @@ export default function App() {
           </div>
         </div>
         <img className="hero-mascot hero-mascot-image" src={mascot} alt="Hack the Future mascot holding a laptop and giving a thumbs-up" />
-        <aside className="status">
-          <div className="status-live-row">
-            <span className="status-dot" />
-            <small>REGISTRATION</small>
-          </div>
-          <b className="status-open">OPEN</b>
-          <hr className="status-rule" />
-          <span className="status-sub">Round 1 Free<br />Be the Future</span>
-        </aside>
       </section>
 
       {/* ═══════════ STATS BAR ═══════════ */}
@@ -620,10 +626,10 @@ export default function App() {
           </div>
           <a href="https://www.linkedin.com/in/abhinav-ahluwalia-153874142/" target="_blank" rel="noopener noreferrer" className="hp-cg-speaker-card hp-cg-photo-card">
             {!cgImageLoaded && <div className="hp-cg-img-skeleton" />}
-            <img 
-              src="/chief-guest.webp" 
-              alt="Abhinav Ahluwalia" 
-              className={`hp-cg-sc-img ${cgImageLoaded ? 'loaded' : ''}`} 
+            <img
+              src="/chief-guest.webp"
+              alt="Abhinav Ahluwalia"
+              className={`hp-cg-sc-img ${cgImageLoaded ? 'loaded' : ''}`}
               onLoad={() => setCgImageLoaded(true)}
             />
             <div className="hp-cg-sc-overlay" />
@@ -759,7 +765,14 @@ export default function App() {
             <div className="hp-ft-logo">
               <img src={navLogo} alt="Hack the Future 3.0" />
             </div>
-            <p>A national-level hackathon by Tulas ACM Student Chapter, Tulas University, Dehradun. Theme: Project to Product. Build. Validate. Pitch.</p>
+            <p className="hp-ft-desc">
+              A national-level hackathon by Tulas ACM Student Chapter,<br className="hp-ft-br" />
+              Tulas University, Dehradun.
+            </p>
+            <p className="hp-ft-theme">
+              <strong>Theme:</strong> Project to Product.<br />
+              <span className="hp-ft-motto">Build. Validate. Pitch.</span>
+            </p>
             <div className="hp-ft-social">
               <a href="https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon /></a>
               <a href="https://chat.whatsapp.com/Ichzy6cHy6pIOCCqxa8E3f" target="_blank" rel="noreferrer" aria-label="WhatsApp"><WhatsappIcon /></a>
