@@ -15,7 +15,14 @@ export function Footer() {
           <div className="hp-ft-logo">
             <img src={navLogo} alt="Hack the Future 3.0" />
           </div>
-          <p>A national-level hackathon by Tulas ACM Student Chapter, Tulas University, Dehradun. Theme: Project to Product. Build. Validate. Pitch.</p>
+          <p className="hp-ft-desc">
+            A national-level hackathon by Tulas ACM Student Chapter,<br className="hp-ft-br" />
+            Tulas University, Dehradun.
+          </p>
+          <p className="hp-ft-theme">
+            <strong>Theme:</strong> Project to Product.<br />
+            <span className="hp-ft-motto">Build. Validate. Pitch.</span>
+          </p>
           <div className="hp-ft-social">
             <a href="https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon /></a>
             <a href="https://chat.whatsapp.com/Ichzy6cHy6pIOCCqxa8E3f" target="_blank" rel="noreferrer" aria-label="WhatsApp"><WhatsappIcon /></a>

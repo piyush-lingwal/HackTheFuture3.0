@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { Home, Mail, Phone, MapPin, Send, Camera, MessageSquare } from 'lucide-react'
+import { Home, Mail, Phone, MapPin, Send, Camera } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
 import mascot from '../../Mascots Variations/Contact Us.webp'
+import { enter, staggerReveal } from '../utils/anime-utils'
 
 const contactInfo = [
   { icon: Mail, label: 'EMAIL US', value: 'Hackathon@tulas.edu.in', link: 'mailto:Hackathon@tulas.edu.in' },
@@ -20,6 +21,29 @@ const socials = [
 export function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: 'General Inquiry', message: '' })
   const [sent, setSent] = useState(false)
+  const mainRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const main = mainRef.current
+    if (!main) return
+
+    // Hero entrance
+    const heroEls = Array.from(main.querySelectorAll('.ct-hero-copy > *, .ct-hero-visual'))
+    enter(heroEls, { y: 28, stagger: 70 })
+
+    // Info cards
+    const infoCards = Array.from(main.querySelectorAll('.ct-info-card'))
+    const obs1 = staggerReveal(infoCards, { y: 35, stagger: 90 })
+
+    // Main section (form & side)
+    const mainBlocks = Array.from(main.querySelectorAll('.ct-form-wrap, .ct-side > *'))
+    const obs2 = staggerReveal(mainBlocks, { y: 40, stagger: 120 })
+
+    return () => {
+      obs1?.disconnect()
+      obs2?.disconnect()
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -45,7 +69,7 @@ export function ContactPage() {
   }
 
   return (
-    <main className="ct-page">
+    <main className="ct-page" ref={mainRef}>
       <Header />
 
       {/* Breadcrumb */}

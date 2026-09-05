@@ -1,8 +1,10 @@
+import { useRef, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { MascotSlot } from '../components/MascotSlot'
 import { tracks } from '../data/event'
+import { enter } from '../utils/anime-utils'
 
 type Props = { page: string }
 const copy: Record<string, [string, string, string]> = {
@@ -23,7 +25,16 @@ const tempProblems = ['Intelligent Public Services', 'Smart Healthcare Assistant
 export function EventPage({ page }: Props) {
   const [label, title, intro] = copy[page]
   const reveal = ['judges', 'mentors', 'sponsors'].includes(page)
-  return <main><Header /><section className="page-hero"><div><p className="eyebrow">{label}</p><h1>{title}</h1><p>{intro}</p></div><MascotSlot label={`${page.toUpperCase()} — approved pose pending`} /></section>
+  const mainRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const main = mainRef.current
+    if (!main) return
+    const heroEls = Array.from(main.querySelectorAll('.page-hero > *, .reveal > *'))
+    enter(heroEls, { y: 25, stagger: 80 })
+  }, [page])
+
+  return <main ref={mainRef}><Header /><section className="page-hero"><div><p className="eyebrow">{label}</p><h1>{title}</h1><p>{intro}</p></div><MascotSlot label={`${page.toUpperCase()} — approved pose pending`} /></section>
     {reveal ? <section className="reveal"><p className="eyebrow">Official announcement pending</p><h2>REVEALING <span>SOON.</span></h2><p>We’ll add official profiles and partner logos here when they are confirmed.</p></section> : <PageContent page={page} />}
   <Footer />
   </main>

@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
@@ -6,6 +7,7 @@ import {
   ArrowRight, Home, Flag,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Tracks.webp'
+import { enter, staggerReveal, reveal } from '../utils/anime-utils'
 
 /* ── Track data ── */
 const tracks = [
@@ -37,8 +39,31 @@ const tracks = [
 ]
 
 export function TracksPage() {
+  const pageRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance
+    enter(Array.from(el.querySelectorAll('.tr-hero-copy > *')))
+    enter([el.querySelector('.tr-hero-visual')!].filter(Boolean), { y: 0, x: 50, duration: 900, delay: 240 })
+
+    // Track cards with alternating slide direction
+    const cards = Array.from(el.querySelectorAll<HTMLElement>('.tr-card'))
+    cards.forEach((card, i) => {
+      push(reveal(card, { x: i % 2 === 0 ? -40 : 40, y: 0, duration: 800, threshold: 0.08 }))
+    })
+
+    // Bottom CTA
+    push(reveal(el.querySelector('.tr-cta-bar') as Element, { y: 32 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
   return (
-    <main className="tr-page">
+    <main className="tr-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}
@@ -62,8 +87,7 @@ export function TracksPage() {
           <div className="tr-h1-line" />
           <p className="tr-hero-sub">
             5 specialized tracks. Real-world problems.<br />
-            Build with a product mindset and<br />
-            pitch your solution to expert judges.
+            Build with a product mindset and pitch your solution to expert judges.
           </p>
         </div>
 
