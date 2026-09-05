@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { Home, ChevronDown, MessageCircle, ArrowRight } from 'lucide-react'
 import mascot from '../../Mascots Variations/Faq.webp'
+import { enter, staggerReveal, reveal, staggerNow } from '../utils/anime-utils'
 
 const categories = [
   {
@@ -50,14 +51,48 @@ const categories = [
 ]
 
 export function FaqPage() {
+  const pageRef = useRef<HTMLElement>(null)
+  const isFirstRender = useRef(true)
   const [open, setOpen] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState('general')
 
   const toggle = (id: string) => setOpen(prev => prev === id ? null : id)
   const activeCat = categories.find(c => c.id === activeTab)!
 
+  // Mount animations
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance
+    enter(Array.from(el.querySelectorAll('.fq-hero-copy > *')))
+    enter([el.querySelector('.fq-hero-visual')!].filter(Boolean), { y: 0, x: 50, duration: 900, delay: 240 })
+
+    // Category tabs stagger
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.fq-tab')),
+      { y: 20, stagger: 60, threshold: 0.05 }
+    ))
+
+    // "Still have questions?" block
+    push(reveal(el.querySelector('.fq-more') as Element, { y: 28 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
+
+  // Reanimate FAQ items on tab change
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return }
+    const el = pageRef.current
+    if (!el) return
+    const items = Array.from(el.querySelectorAll('.fq-item'))
+    staggerNow(items, { y: 22, stagger: 55 })
+  }, [activeTab])
+
   return (
-    <main className="fq-page">
+    <main className="fq-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}

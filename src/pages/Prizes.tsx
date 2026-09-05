@@ -1,8 +1,10 @@
+import { useRef, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { Trophy, Gift, Star, Rocket, Users, Home, Award } from 'lucide-react'
 import mascot from '../../Mascots Variations/Prize.webp'
 import mascot2 from '../../Mascots Variations/Prize2 (1).webp'
+import { enter, staggerReveal, reveal, popIn } from '../utils/anime-utils'
 
 /* ── Rank cards ── */
 const podium = [
@@ -42,8 +44,46 @@ const perks = [
 ]
 
 export function PrizesPage() {
+  const pageRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance
+    enter(Array.from(el.querySelectorAll('.pr-hero-copy > *')))
+    enter([el.querySelector('.pr-hero-visual')!].filter(Boolean), { y: 0, x: 50, duration: 900, delay: 240 })
+
+    // Pool banner pop
+    push(popIn(el.querySelector('.pr-pool-banner') as Element))
+
+    // Podium cards rise up (more dramatic y)
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.pr-pod-card')),
+      { y: 70, stagger: 110, duration: 900, easing: 'easeOutExpo' }
+    ))
+
+    // Consolation cards
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.pr-cons-card')),
+      { y: 36, stagger: 90 }
+    ))
+
+    // Perks grid
+    push(staggerReveal(
+      Array.from(el.querySelectorAll('.pr-perk')),
+      { y: 32, stagger: 85 }
+    ))
+
+    // Terms bar
+    push(reveal(el.querySelector('.pr-terms') as Element, { y: 20 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
   return (
-    <main className="pr-page">
+    <main className="pr-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}

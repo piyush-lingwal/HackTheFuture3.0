@@ -379,37 +379,9 @@
   margin: 12px 0 8px;
 }
 .pr-pod-amount {
-  font: 700 clamp(26px, 3.2vw, 40px) / 1 'Space Grotesk', sans-serif;
+  font: 800 clamp(26px, 3.2vw, 40px) / 1 'Space Grotesk', sans-serif;
   letter-spacing: -1.5px;
-  color: #1a1228;
-}
-/* Winner gold shimmer on amount */
-.pr-pod-card--featured .pr-pod-amount,
-.pr-pod-gold .pr-pod-amount {
-  background: linear-gradient(90deg, #92400e, #D97706, #fbbf24, #D97706, #92400e);
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmerText 4s linear infinite;
-}
-/* Silver shimmer on 2nd place amount */
-.pr-pod-silver .pr-pod-amount {
-  background: linear-gradient(90deg, #6b7280, #c0c0c0, #e8e8e8, #c0c0c0, #6b7280);
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmerText 6s linear infinite;
-}
-/* Bronze shimmer on 3rd place amount */
-.pr-pod-bronze .pr-pod-amount {
-  background: linear-gradient(90deg, #78350f, #CD7F32, #f0a060, #CD7F32, #78350f);
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmerText 7s linear infinite;
+  color: #000000;
 }
 
 /* Incubation support badge — shown below cash prize on top 3 cards */
@@ -492,9 +464,9 @@
 }
 .pr-cons-sub { font-size: 11px; color: #9086a0; }
 .pr-cons-amount {
-  font: 700 28px / 1 'Space Grotesk', sans-serif;
+  font: 800 28px / 1 'Space Grotesk', sans-serif;
   letter-spacing: -1px;
-  color: var(--purple);
+  color: #000000;
   flex-shrink: 0;
 }
 

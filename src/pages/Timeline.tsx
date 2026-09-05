@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
@@ -7,6 +8,7 @@ import {
   Home, ArrowUpRight, CreditCard,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Timeline.webp'
+import { enter, staggerReveal, reveal } from '../utils/anime-utils'
 
 /* ── Schedule data ── */
 const days = [
@@ -47,8 +49,35 @@ const days = [
 ]
 
 export function TimelinePage() {
+  const pageRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = pageRef.current
+    if (!el) return
+    const obs: IntersectionObserver[] = []
+    const push = (o: IntersectionObserver | null) => { if (o) obs.push(o) }
+
+    // Hero entrance
+    enter(Array.from(el.querySelectorAll('.tl-hero-copy > *')))
+    enter([el.querySelector('.tl-hero-visual')!].filter(Boolean), { y: 0, x: 50, duration: 920, delay: 250 })
+
+    // Each day group: the date block reveals, then events stagger
+    const groups = Array.from(el.querySelectorAll<HTMLElement>('.tl-day-group'))
+    groups.forEach((group, i) => {
+      // Date block slides in from the left
+      push(reveal(group.querySelector('.tl-date') as Element, { x: -36, y: 0, duration: 700, delay: i * 60, threshold: 0.15 }))
+      // Events stagger in
+      const events = Array.from(group.querySelectorAll<HTMLElement>('.tl-event'))
+      push(staggerReveal(events, { y: 28, stagger: 100, delay: i * 60, threshold: 0.12 }))
+    })
+
+    // Bottom CTA
+    push(reveal(el.querySelector('.tl-cta') as Element, { y: 36 }))
+
+    return () => obs.forEach(o => o.disconnect())
+  }, [])
   return (
-    <main className="tl-page">
+    <main className="tl-page" ref={pageRef}>
       <Header />
 
       {/* Breadcrumb */}

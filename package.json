@@ -12,6 +12,7 @@
     "@gsap/react": "^2.1.2",
     "@studio-freight/react-lenis": "^0.0.47",
     "@vitejs/plugin-react": "latest",
+    "animejs": "^4.5.0",
     "gsap": "^3.15.0",
     "lucide-react": "^1.33.0",
     "react": "latest",
@@ -22,6 +23,7 @@
     "vite": "latest"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.13",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest"

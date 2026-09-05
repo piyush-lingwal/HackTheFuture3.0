@@ -1230,65 +1230,12 @@
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Prize amount gradient text animations */
+/* Prize amount — crisp, bold black text */
 .hp-pz-chip strong {
-  font: 800 clamp(16px, 1.8vw, 20px)/1 'Space Grotesk', sans-serif;
-  letter-spacing: -0.8px;
+  font: 800 clamp(17px, 2vw, 21px)/1 'Space Grotesk', sans-serif;
+  letter-spacing: -0.6px;
+  color: #0b0716;
   white-space: nowrap;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 250% auto;
-  animation: gradSweep 3.5s linear infinite;
-}
-
-@keyframes gradSweep {
-  0% {
-    background-position: 0% center;
-  }
-
-  100% {
-    background-position: 250% center;
-  }
-}
-
-/* Gold — warm shimmer */
-.hp-pz-chip--gold strong {
-  background-image: linear-gradient(90deg,
-      #7a5000, #d4a017, #ffd700, #fff4b0, #ffd700, #d4a017, #7a5000);
-  animation-delay: 0s;
-}
-
-/* Silver — cool chrome */
-.hp-pz-chip--silver strong {
-  background-image: linear-gradient(90deg,
-      #4a4a4a, #9e9e9e, #e0e0e0, #ffffff, #e0e0e0, #9e9e9e, #4a4a4a);
-  animation-duration: 4s;
-  animation-delay: -1.3s;
-}
-
-/* Bronze — copper glow */
-.hp-pz-chip--bronze strong {
-  background-image: linear-gradient(90deg,
-      #5c2e00, #b8611a, #e8923a, #ffd4a0, #e8923a, #b8611a, #5c2e00);
-  animation-duration: 4.5s;
-  animation-delay: -2.8s;
-}
-
-/* Consolation — soft purple */
-.hp-pz-chip--con strong {
-  background-image: linear-gradient(90deg,
-      #3b0764, #7c3aed, #c4b5fd, #ede9fe, #c4b5fd, #7c3aed, #3b0764);
-  animation-duration: 5s;
-}
-
-/* stagger the two consolation chips */
-.hp-pz-chip:nth-child(5) strong {
-  animation-delay: -1s;
-}
-
-.hp-pz-chip:nth-child(6) strong {
-  animation-delay: -3s;
 }
 
 .hp-pz-chip--gold {
@@ -1356,12 +1303,6 @@
   letter-spacing: 0.5px;
 }
 
-.hp-pz-chip strong {
-  font: 800 clamp(16px, 1.8vw, 20px)/1 'Space Grotesk', sans-serif;
-  letter-spacing: -0.8px;
-  color: #0e0a1c;
-  white-space: nowrap;
-}
 
 /* Prize wrapper: stacks cash + incubation tag */
 .hp-pz-chip-prize {

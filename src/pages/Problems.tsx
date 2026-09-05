@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
@@ -7,6 +7,7 @@ import {
   Globe, ArrowRight, Home, ChevronDown,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Problem.webp'
+import { enter, staggerReveal, staggerNow } from '../utils/anime-utils'
 
 /* ── problem data ── */
 const problems = [
@@ -79,9 +80,47 @@ const filters = [
 export function ProblemsPage() {
   const [active, setActive] = useState('all')
   const filtered = active === 'all' ? problems : problems.filter(p => p.tag === active)
+  const mainRef = useRef<HTMLElement>(null)
+  const isFirstRender = useRef(true)
+
+  useEffect(() => {
+    const main = mainRef.current
+    if (!main) return
+
+    // Hero entrance
+    const heroEls = Array.from(main.querySelectorAll('.pb-hero-copy > *, .pb-hero-visual'))
+    enter(heroEls, { y: 28, stagger: 70 })
+
+    // Filter bar entrance
+    const filterBar = main.querySelector('.pb-filters-bar')
+    if (filterBar) {
+      enter([filterBar], { y: 20, delay: 250 })
+    }
+
+    // Scroll reveal problem rows
+    const rows = Array.from(main.querySelectorAll('.pb-row'))
+    const obs = staggerReveal(rows, { y: 35, stagger: 65 })
+
+    return () => {
+      obs?.disconnect()
+    }
+  }, [])
+
+  // Re-animate when active category filter changes
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    const main = mainRef.current
+    if (!main) return
+
+    const rows = Array.from(main.querySelectorAll('.pb-row'))
+    staggerNow(rows, { y: 18, stagger: 45, duration: 450 })
+  }, [active])
 
   return (
-    <main className="pb-page">
+    <main className="pb-page" ref={mainRef}>
       <Header />
 
       {/* Breadcrumb */}
