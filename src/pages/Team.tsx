@@ -1,64 +1,32 @@
 import { useEffect } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import aaditya from "../../public/team/aaditya.webp";
-import aditya_rawat from "../../public/team/Aditya_Rawat.webp";
-import chetan_pandey from "../../public/team/chetan_pandey.webp";
-import gaurav_shukla from "../../public/team/gaurav_shukla.webp";
-import golu from "../../public/team/Golu.webp";
-import harsh from "../../public/team/harsh.webp";
-import jasan_dikshit from "../../public/team/Jasan.webp";
-import keshav_kumar from "../../public/team/Keshav_Kumar.webp";
-import nikhil from "../../public/team/nikhil.webp";
-import piyush_lingwal from "../../public/team/piyush_lingwal.webp";
-import piyush_rawat from "../../public/team/piyush_rawat.webp";
-import prakriti from "../../public/team/prakriti.webp";
-import prashant_krishan_bharti from "../../public/team/Prashant_Krishan_Bharti.webp";
-import prince from "../../public/team/prince.webp";
-import rishanshu_tripathi from "../../public/team/Rishanshu_Tripathi.webp";
-import ritish from "../../public/team/ritish.webp";
-import smriti_bisht from "../../public/team/smriti_bisht.webp";
-import sonali from "../../public/team/sonali.webp";
-import swapnil from "../../public/team/swapnil.webp";
-import tabeer from "../../public/team/Tabeer_hussain.webp";
-import sandip_kumar from '../../public/team/sandeep_kumar.png';
-
-
-
-
 const facultyMembers = [
-  { name: 'HOD', role: 'Convener', image: sandip_kumar },
+  { name: 'HOD', role: 'Convener', image: '/team/sandeep_kumar.png' },
   { name: 'Mr. Sharadh Pratap Singh', role: 'Co-Convener', image: '' },
 ]
 
 const teamMembers = [
-  { name: 'Gaurav Shukla', role: 'Lead Organiser', image: gaurav_shukla },
-  { name: 'Chetan Pandey', role: 'Lead Organiser', image: chetan_pandey },
-  { name: 'Smriti Bisht', role: 'Lead Organiser', image: smriti_bisht },
-  { name: 'Piyush Lingwal', role: 'Tech lead', image: piyush_lingwal },
-  { name: 'Prashant Krishan Bharti', role: 'Secretary', image: prashant_krishan_bharti },
-  { name: 'Prakriti', role: 'Treasurer', image: prakriti },
-  { name: 'Rishanshu Tripathi', role: 'Web master', image: rishanshu_tripathi },
-  { name: 'Jasan Dikshit', role: 'PR & Outreach Head', image: jasan_dikshit },
-  { name: 'Prince', role: 'Event Head', image: prince },
-   { name: 'Aaditya', role: 'Co Event Head', image: aaditya },
-  { name: 'Tabeer Hussain', role: 'Media Head', image: tabeer },
-  { name: 'Nikhil', role: 'Co Techincal Lead', image: nikhil },
-  { name: 'Golu Kumar', role: 'Technical Member', image: golu },
-  { name: 'Sonali Kumari', role: 'Event Crew', image: sonali },
-
-  { name: 'Aditya Rawat', role: 'Technical Member', image: aditya_rawat },
- 
- 
-  { name: 'Harsh', role: 'Technical Member', image: harsh },
-  { name: 'Keshav Kumar', role: 'PR Member', image: keshav_kumar },
-  
-  { name: 'Piyush Rawat', role: 'Technical Member', image: piyush_rawat },
-  
-  
-  
-  { name: 'Ritish', role: 'Membership Chair', image: ritish },
-  { name: 'Swapnil', role: 'Team Member', image: swapnil },
+  { name: 'Gaurav Shukla', role: 'Lead Organiser', image: '/team/gaurav_shukla.webp' },
+  { name: 'Chetan Pandey', role: 'Lead Organiser', image: '/team/chetan_pandey.webp' },
+  { name: 'Smriti Bisht', role: 'Lead Organiser', image: '/team/smriti_bisht.webp' },
+  { name: 'Piyush Lingwal', role: 'Tech lead', image: '/team/piyush_lingwal.webp' },
+  { name: 'Prashant Krishan Bharti', role: 'Secretary', image: '/team/Prashant_Krishan_Bharti.webp' },
+  { name: 'Prakriti', role: 'Treasurer', image: '/team/prakriti.webp' },
+  { name: 'Rishanshu Tripathi', role: 'Web master', image: '/team/Rishanshu_Tripathi.webp' },
+  { name: 'Jasan Dikshit', role: 'PR & Outreach Head', image: '/team/Jasan.webp' },
+  { name: 'Prince', role: 'Event Head', image: '/team/prince.webp' },
+  { name: 'Aaditya', role: 'Co Event Head', image: '/team/aaditya.webp' },
+  { name: 'Tabeer Hussain', role: 'Media Head', image: '/team/Tabeer_hussain.webp' },
+  { name: 'Nikhil', role: 'Co Techincal Lead', image: '/team/nikhil.webp' },
+  { name: 'Golu Kumar', role: 'Technical Member', image: '/team/Golu.webp' },
+  { name: 'Sonali Kumari', role: 'Event Crew', image: '/team/sonali.webp' },
+  { name: 'Aditya Rawat', role: 'Technical Member', image: '/team/Aditya_Rawat.webp' },
+  { name: 'Harsh', role: 'Technical Member', image: '/team/harsh.webp' },
+  { name: 'Keshav Kumar', role: 'PR Member', image: '/team/Keshav_Kumar.webp' },
+  { name: 'Piyush Rawat', role: 'Technical Member', image: '/team/piyush_rawat.webp' },
+  { name: 'Ritish', role: 'Membership Chair', image: '/team/ritish.webp' },
+  { name: 'Swapnil', role: 'Team Member', image: '/team/swapnil.webp' },
 ]
 
 const getInitials = (name: string) => {

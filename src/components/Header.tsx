@@ -48,7 +48,7 @@ export function Header() {
           ))}
         </nav>
 
-        <a className="button button-outline header-reg-btn" href={event.registrationUrl}>
+        <a className="button button-outline header-reg-btn" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
           Register now <strong>↗</strong>
         </a>
 
@@ -80,7 +80,7 @@ export function Header() {
             </NavLink>
           ))}
         </div>
-        <a className="button drawer-reg-btn" href={event.registrationUrl}>
+        <a className="button drawer-reg-btn" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
           Register now <strong>↗</strong>
         </a>
       </nav>

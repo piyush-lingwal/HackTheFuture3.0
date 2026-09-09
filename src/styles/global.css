@@ -342,16 +342,11 @@ h2 {
 }
 .about {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  column-gap: 90px;
-  row-gap: 10px;
+  grid-template-columns: 1fr 1.15fr;
+  column-gap: clamp(40px, 5vw, 80px);
+  row-gap: 36px;
   align-items: center;
   background: var(--paper);
-}
-.about p {
-  max-width: 440px;
-  font-size: 15px;
-  line-height: 1.75;
 }
 .temporary {
   font-size: 12px !important;

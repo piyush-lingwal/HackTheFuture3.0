@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import '../styles/hero-stack.css'
 
 interface StackImage {
@@ -146,11 +146,10 @@ export function HeroImageStack() {
                   className="hero-stack-img"
                   loading={idx === 0 ? 'eager' : 'lazy'}
                 />
-                
+
                 {/* Gradient shade & details on active card */}
                 <div className="hero-stack-overlay">
                   <div className="hero-stack-top-badge">
-                    <Sparkles className="hero-stack-sparkle-icon" />
                     <span>{item.tag}</span>
                   </div>
                   <div className="hero-stack-info">
