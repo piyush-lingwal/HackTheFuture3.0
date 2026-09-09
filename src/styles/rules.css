@@ -213,6 +213,7 @@
   padding: 0; margin: 0;
   display: grid;
   gap: 14px;
+  
 }
 .rl-points li {
   display: flex;
@@ -221,6 +222,7 @@
   font-size: 14px;
   line-height: 1.65;
   color: #3e3848;
+  text-align:justify;
 }
 .rl-points li svg { color: var(--purple); flex-shrink: 0; margin-top: 2px; }
 .rl-points--donts li svg,

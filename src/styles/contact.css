@@ -36,7 +36,7 @@
 }
 .ct-purple { color: var(--purple); display: block; }
 .ct-h1-line { width: 44px; height: 3px; background: var(--purple); border-radius: 2px; margin: 20px 0 22px; }
-.ct-hero-sub { font-size: 15px; line-height: 1.78; color: #6e6878; margin: 0; }
+.ct-hero-sub { font-size: 15px; line-height: 1.78; color: #6e6878; margin: 0;text-align:justify; }
 .ct-hero-visual { display: flex; justify-content: flex-end; align-items: center; z-index: 2; }
 .ct-hero-mascot { height: 320px; width: auto; object-fit: contain; filter: drop-shadow(0 16px 32px rgba(139,54,247,0.18)); }
 

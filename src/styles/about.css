@@ -98,22 +98,13 @@
   font-weight: 700;
 }
 
-/* Pipeline badge */
-.ab-pipeline-badge {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 6px;
-  font: 700 10.5px/1.5 'DM Mono', monospace;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #fff;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35) 0%, rgba(154, 68, 252, 0.22) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.35);
-  border-radius: 8px;
-  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.2);
-  padding: 8px 14px;
-  margin: 0 0 24px;
+.ab-hero-copy p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #b8afc8;
+  max-width: 430px;
+  margin: 0 0 18px;
+  text-align:justify;
 }
 
 .ab-pipeline-badge .purple-text {
@@ -455,6 +446,7 @@
   line-height: 1.75;
   color: #b3a9c6;
   margin: 0;
+  text-align:justify;
 }
 .ab-flashback-desc strong {
   color: #ffffff;
