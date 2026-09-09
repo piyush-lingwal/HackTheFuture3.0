@@ -195,6 +195,7 @@
   line-height: 1.82;
   color: #6e6878;
   margin: 0;
+  text-align:justify;
 }
 .pr-hero-sub strong { color: #7c3aed; font-weight: 700; }
 
@@ -560,7 +561,7 @@
 }
 
 .pr-pod-incubation::before {
-  content: '🚀';
+
   position: absolute;
   top: -11px;
   left: 50%;
@@ -772,7 +773,6 @@
 }
 
 .pr-perk:hover {
-  transform: translateY(-8px) scale(1.018);
   border-color: rgba(139, 92, 246, 0.65);
   box-shadow: 0 20px 42px -6px rgba(124, 58, 237, 0.22), 0 0 0 1px rgba(139, 92, 246, 0.4);
 }
@@ -795,7 +795,7 @@
 }
 
 .pr-perk:hover .pr-perk-icon {
-  transform: scale(1.15) rotate(5deg);
+  
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(168, 85, 247, 0.15));
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.45);
   color: #6d28d9;
@@ -832,6 +832,7 @@
   color: #64748b;
   line-height: 1.65;
   margin: 0;
+  text-align:justify;
 }
 
 /* ── Terms ── */

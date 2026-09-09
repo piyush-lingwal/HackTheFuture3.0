@@ -74,6 +74,7 @@
   color: #b8afc8;
   max-width: 430px;
   margin: 0 0 18px;
+  text-align:justify;
 }
 .ab-hero-closing {
   color: #d5cde3 !important;
@@ -401,6 +402,7 @@
   line-height: 1.75;
   color: #b3a9c6;
   margin: 0;
+  text-align:justify;
 }
 .ab-flashback-desc strong {
   color: #ffffff;

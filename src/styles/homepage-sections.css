@@ -3255,7 +3255,7 @@
   color: #f1f5f9;
   margin: 0;
   text-transform: none;
-  text-align: left;
+  text-align: justify;
 }
 
 .hp-cg-ds-sub {
@@ -3263,7 +3263,7 @@
   color: rgba(255, 255, 255, 0.72);
   margin: 0;
   text-transform: none;
-  text-align: left;
+  text-align: justify;
 }
 
 .hp-cg-speaker-card {

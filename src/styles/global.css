@@ -424,8 +424,8 @@ h2 {
   background: #faf9f7;
 }
 .timeline-list {
-  max-width: 980px;
-  margin: 52px auto 0;
+  max-width: 900px;
+  margin: 20px auto 0;
   border-left: 1px solid #ad82eb;
   padding-left: 36px;
   display: grid;
