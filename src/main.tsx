@@ -10,6 +10,7 @@ import { RulesPage } from './pages/Rules'
 import { TracksPage } from './pages/Tracks'
 import { PrizesPage } from './pages/Prizes'
 import { TimelinePage } from './pages/Timeline'
+
 import { FaqPage } from './pages/Faq'
 import { ContactPage } from './pages/Contact'
 import { TeamPage } from './pages/Team'
@@ -24,6 +25,7 @@ import './styles/prizes.css'
 import './styles/timeline.css'
 import './styles/faq.css'
 import './styles/contact.css'
+
 import './styles/team.css'
 import './styles/home-mobile.css'
 
