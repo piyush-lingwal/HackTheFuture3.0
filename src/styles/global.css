@@ -67,6 +67,13 @@ a {
   line-height: 1;
   min-width: 132px;
 }
+/* When .brand is also .brand-image (the navbar logo link), force row layout */
+.brand.brand-image {
+  flex-direction: row !important;
+  align-items: center !important;
+  min-width: auto !important;
+  gap: 10px !important;
+}
 .brand b {
   font-size: 23px;
   font-weight: 800;
@@ -419,8 +426,8 @@ h2 {
   background: #faf9f7;
 }
 .timeline-list {
-  max-width: 980px;
-  margin: 52px auto 0;
+  max-width: 900px;
+  margin: 20px auto 0;
   border-left: 1px solid #ad82eb;
   padding-left: 36px;
   display: grid;
@@ -687,13 +694,16 @@ footer small {
 
 .brand-image {
   height: 58px;
-  min-width: 118px;
+  width: auto;
+  min-width: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .brand-image img {
-  width: 92px;
-  height: 58px;
+  height: 42px;
+  width: auto;
   object-fit: contain;
-  object-position: left center;
 }
 .header nav a.active {
   color: var(--purple);
@@ -1715,26 +1725,25 @@ footer small {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 116px;
-  height: 64px;
-  min-width: 116px;
+  width: auto;
+  min-width: auto;
+  gap: 10px;
 }
 .brand-image img {
   display: block;
-  width: 94px;
-  height: 64px;
+  height: 42px;
+  width: auto;
   object-fit: contain;
-  object-position: left center;
 }
 @media (max-width: 850px) {
   .brand-image {
-    width: 82px;
-    min-width: 82px;
-    height: 56px;
+    width: auto;
+    min-width: auto;
+    gap: 8px;
   }
   .brand-image img {
-    width: 76px;
-    height: 56px;
+    height: 34px;
+    width: auto;
   }
 }
 
