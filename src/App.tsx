@@ -380,16 +380,31 @@ export default function App() {
             This edition's theme is <strong>"Project to Product"</strong> — challenging students to move beyond academic projects
             and build solutions with real product potential, entrepreneurship mindset and scalable impact.
           </p>
-          <div className="about-actions">
-            <Link className="button button-outline about-know-more" to="/about">Know More About HTF <strong>→</strong></Link>
-          </div>
         </div>
         <div className="about-media-col">
           <HeroImageStack />
-          <div className="about-pipeline-wrap">
-            <p className="about-pipeline">
-              PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span>
-            </p>
+        </div>
+
+        {/* Tulas University — full-width row below both columns */}
+        <div className="about-tulas-block">
+          <div className="about-tulas-header">
+
+            <h3 className="about-tulas-heading">WHY<br /><span>TULAS</span> UNIVERSITY?</h3>
+          </div>
+          <p className="about-tulas-tagline">
+            Tulas University is a future-focused ecosystem where technology, creativity, innovation, and entrepreneurship come together.
+            With a strong emphasis on emerging technologies, research, hands-on learning, and industry exposure, Tulas goes beyond traditional education.
+            Students are empowered to explore new technologies, solve real-world challenges, and transform bold ideas into meaningful solutions.
+            Through innovation, mentorship, collaboration, and practical experiences, Tulas nurtures a culture of curiosity, experimentation, and entrepreneurship.
+            Tulas Hackathon brings this spirit to life—uniting passionate minds to collaborate, compete, innovate, and build the future.
+          </p>
+          <div className="about-tulas-footer">
+            <Link className="button button-outline about-know-more" to="/about">Know More About HTF <strong>→</strong></Link>
+            <div className="about-pipeline-wrap">
+              <p className="about-pipeline">
+                PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -624,7 +639,7 @@ export default function App() {
               <h3 className="hp-cg-ds-heading">
                 Building a Bridge Between<br />Farmers and Consumers
               </h3>
-              
+
               <div className="hp-cg-ds-desc hp-cg-quote-box">
                 <p className="hp-cg-ds-strong">
                   A visionary entrepreneur who co-founded Kiwi Kisan Window in 2017 — a Dehradun-based agri-commerce venture dedicated to connecting India's rural farming communities with modern urban markets.
@@ -636,10 +651,10 @@ export default function App() {
             </div>
             <a href="https://www.linkedin.com/in/abhinav-ahluwalia-153874142/" target="_blank" rel="noopener noreferrer" className="hp-cg-speaker-card hp-cg-photo-card">
               {!cgImageLoaded && <div className="hp-cg-img-skeleton" />}
-              <img 
-                src="/chief-guest.webp" 
-                alt="Abhinav Ahluwalia" 
-                className={`hp-cg-sc-img ${cgImageLoaded ? 'loaded' : ''}`} 
+              <img
+                src="/chief-guest.webp"
+                alt="Abhinav Ahluwalia"
+                className={`hp-cg-sc-img ${cgImageLoaded ? 'loaded' : ''}`}
                 onLoad={() => setCgImageLoaded(true)}
               />
               <div className="hp-cg-sc-overlay" />
@@ -670,10 +685,10 @@ export default function App() {
             </div>
             <a href="https://www.linkedin.com/in/nupuragarwal20/" target="_blank" rel="noopener noreferrer" className="hp-cg-speaker-card hp-cg-photo-card">
               {!coImageLoaded && <div className="hp-cg-img-skeleton" />}
-              <img 
-                src="/nupur-agarwaal.jpg" 
-                alt="Nupur Agarwaal" 
-                className={`hp-cg-sc-img ${coImageLoaded ? 'loaded' : ''}`} 
+              <img
+                src="/nupur-agarwaal.jpg"
+                alt="Nupur Agarwaal"
+                className={`hp-cg-sc-img ${coImageLoaded ? 'loaded' : ''}`}
                 onLoad={() => setCoImageLoaded(true)}
               />
               <div className="hp-cg-sc-overlay" />
@@ -688,7 +703,7 @@ export default function App() {
           {/* ── Highlight: Shark Tank India ₹2.5 Crore Triumph ── */}
           <div className="hp-cg-deal-banner">
             <div className="hp-cg-deal-glow" aria-hidden="true" />
-            
+
             <div className="hp-cg-deal-tag">
               <span className="hp-cg-deal-tag-dot" />
               <span>SHARK TANK INDIA - SEASON 4</span>
@@ -697,7 +712,7 @@ export default function App() {
             <div className="hp-cg-deal-card">
               <div className="hp-cg-deal-border-beam" aria-hidden="true" />
               <div className="hp-cg-deal-sheen" aria-hidden="true" />
-              
+
               <div className="hp-cg-deal-media">
                 <img
                   src="/sharktank.png"
@@ -833,5 +848,3 @@ export default function App() {
     </main>
   )
 }
-
-
