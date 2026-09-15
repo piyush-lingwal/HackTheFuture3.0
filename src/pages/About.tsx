@@ -242,7 +242,7 @@ export function AboutPage() {
             THE <span className="ab-purple">FUTURE.</span>
           </h1>
           <div className="ab-h1-line" />
-          <p className="ab-desc">
+          <p className="ab-desc" style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
             Hack the Future 3.0 is a national-level hackathon organized by{' '}
             <strong>Tulas ACM Student Chapter</strong>, Tulas University, Dehradun.
             This edition's theme is <strong>"Project to Product"</strong> — encouraging students to

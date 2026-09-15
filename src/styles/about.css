@@ -90,7 +90,9 @@
   letter-spacing: -0.01em;
   max-width: 520px;
   margin: 0 0 22px;
-  text-wrap: pretty;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  text-align-last: left;
 }
 
 .ab-hero-copy p strong {

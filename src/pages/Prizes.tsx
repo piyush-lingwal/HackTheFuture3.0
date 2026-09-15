@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { Trophy, Gift, Star, Rocket, Users, Home, Award } from 'lucide-react'
+import { Trophy, Home, Award } from 'lucide-react'
 import mascot from '../../Mascots Variations/Prize.webp'
 import mascot2 from '../../Mascots Variations/Prize2 (1).webp'
 import { enter, staggerReveal, reveal, popIn } from '../utils/anime-utils'
@@ -36,12 +36,7 @@ const consolation = [
   { num: '05', label: 'CONSOLATION PRIZE', amount: '₹10,000', sub: '5th Place' },
 ]
 
-const perks = [
-  { icon: Gift, title: 'MORE THAN MONEY', desc: 'Winner teams get incubation support, mentorship and exposure to IIT, NIT and industry leaders.' },
-  { icon: Star, title: 'SPECIAL RECOGNITION', desc: 'Exciting goodie bags, certificates, sponsor rewards and special partner awards.' },
-  { icon: Rocket, title: 'INCUBATION SUPPORT', desc: 'Top 3 teams get ₹1,20,000 in incubation support — ON TOP of cash prizes — to build their product into a real startup.' },
-  { icon: Users, title: 'EVERY PARTICIPANT', desc: 'Every participant receives a participation certificate and amazing swag.' },
-]
+
 
 export function PrizesPage() {
   const pageRef = useRef<HTMLElement>(null)
@@ -71,11 +66,7 @@ export function PrizesPage() {
       { y: 36, stagger: 90 }
     ))
 
-    // Perks grid
-    push(staggerReveal(
-      Array.from(el.querySelectorAll('.pr-perk')),
-      { y: 32, stagger: 85 }
-    ))
+
 
     // Terms bar
     push(reveal(el.querySelector('.pr-terms') as Element, { y: 20 }))
@@ -180,20 +171,7 @@ export function PrizesPage() {
         </div>
       </div>
 
-      {/* ── Perks ── */}
-      <div className="pr-perks-wrap section">
-        <div className="pr-perks">
-          {perks.map(({ icon: Icon, title, desc }) => (
-            <div className="pr-perk" key={title}>
-              <div className="pr-perk-icon"><Icon size={22} strokeWidth={1.5} /></div>
-              <div>
-                <strong>{title}</strong>
-                <p>{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+
 
       {/* Terms */}
       <div className="pr-terms">

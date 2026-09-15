@@ -1,5 +1,6 @@
 import { event } from '../data/event'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import tulasLogo from '../assets/tulas-logo.png'
 import logo from '../../NavBar Logo.webp'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
@@ -36,7 +37,9 @@ export function Header() {
     <>
       <header className={`header ${scrolled ? 'header-scrolled' : ''} ${isLightPage ? 'header-theme-light' : ''}`}>
         <Link className="brand brand-image" to="/" aria-label="Hack the Future 3.0 home">
-          <img src={logo} alt="Hack the Future 3.0" />
+          <img src={tulasLogo} alt="Tula's University" className="brand-logo-tulas" />
+          <span className="brand-logo-sep" aria-hidden="true" />
+          <img src={logo} alt="Hack the Future 3.0" className="brand-logo-htf" />
         </Link>
 
         {/* Desktop nav */}

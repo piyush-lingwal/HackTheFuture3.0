@@ -716,143 +716,7 @@
   transform: scale(1.05);
 }
 
-/* ── Perks Section ── */
-.pr-perks-wrap {
-  background: #f8f6fb;
-  padding-top: 30px;
-}
 
-.pr-perks {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  background: transparent;
-  border: none;
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
-.pr-perk {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 26px 22px;
-  background: linear-gradient(135deg, #ffffff 65%, rgba(243, 232, 255, 0.45) 100%);
-  border: 1.5px solid rgba(168, 85, 247, 0.22);
-  border-radius: 20px;
-  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 0.35s ease;
-  overflow: hidden;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.pr-perk::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 80%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    transparent 100%
-  );
-  transform: skewX(-22deg);
-  transition: left 0.8s ease;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.pr-perk:hover::before {
-  left: 140%;
-}
-
-.pr-perk:hover {
-  border-color: rgba(139, 92, 246, 0.65);
-  box-shadow: 0 20px 42px -6px rgba(124, 58, 237, 0.22), 0 0 0 1px rgba(139, 92, 246, 0.4);
-  transform: translateY(-4px);
-}
-
-/* FIXED ICON: Exact square 48x48px container, never stretched */
-.pr-perk-icon {
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
-  max-width: 48px !important;
-  max-height: 48px !important;
-  flex: 0 0 48px !important;
-  border-radius: 14px;
-  border: 1.5px solid rgba(139, 92, 246, 0.3);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(168, 85, 247, 0.06));
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  color: #7c3aed;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.12);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              filter 0.3s ease,
-              background 0.3s ease,
-              box-shadow 0.3s ease;
-  box-sizing: border-box;
-}
-
-.pr-perk:hover .pr-perk-icon {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(168, 85, 247, 0.15));
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.45);
-  color: #6d28d9;
-}
-
-.pr-perk-icon svg {
-  width: 22px;
-  height: 22px;
-  display: block;
-}
-
-/* FIXED CONTENT WRAPPER: Exclude .pr-perk-icon so it doesn't stretch */
-.pr-perk > div:not(.pr-perk-icon),
-.pr-perk-content,
-.pr-perk-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  width: 100%;
-}
-
-.pr-perk strong {
-  display: block;
-  font-family: 'Space Grotesk', 'Manrope', sans-serif;
-  font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #0f172a;
-  line-height: 1.35;
-  margin: 0;
-  text-align: left;
-  transition: color 0.25s ease;
-}
-
-.pr-perk:hover strong {
-  color: #7c3aed;
-}
-
-.pr-perk p {
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 12.5px;
-  color: #64748b;
-  line-height: 1.65;
-  margin: 0;
-  text-align: justify;
-}
 
 /* ── Terms ── */
 .pr-terms {
@@ -881,9 +745,6 @@
 }
 
 /* ── Responsive Fixes ── */
-@media (max-width: 1024px) {
-  .pr-perks { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-}
 
 @media (max-width: 860px) {
   .pr-hero { grid-template-columns: 1fr; }
@@ -893,7 +754,6 @@
   .pr-podium { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 18px; }
   .pr-pod-card--featured { order: -1; }
   .pr-consolation { grid-template-columns: 1fr; max-width: 440px; margin: 20px auto 0; }
-  .pr-perks { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .pr-pool-banner { flex-wrap: wrap; gap: 16px; }
   .pr-pool-label { writing-mode: horizontal-tb; transform: none; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px; padding-right: 0; width: 100%; }
 }
@@ -902,7 +762,6 @@
   .pr-hero { padding: 36px 20px 0; }
   .pr-section,
   .pr-podium-wrap,
-  .pr-perks-wrap { padding: 28px 16px; }
   .pr-cons-inner { padding: 16px 20px; gap: 12px; }
   .pr-cons-label { white-space: normal; }
   .pr-pod-inner { padding: 24px 16px 26px; }
@@ -916,5 +775,4 @@
   .pr-pod-amount { font-size: clamp(28px, 8vw, 36px); }
   .pr-cons-amount { font-size: 22px; }
   .pr-pool-banner { padding: 20px 16px; }
-  .pr-perk { padding: 20px 18px; }
 }
