@@ -51,8 +51,8 @@ export function Header() {
           ))}
         </nav>
 
-        <a className="button button-outline header-reg-btn" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
-          Register now <strong>↗</strong>
+        <a className="button button-outline header-reg-btn" href="https://unstop.com/hackathons/hack-the-future-3o-tulas-university-1748989/case-submissions/856165" target="_blank" rel="noopener noreferrer">
+          Results <strong>↗</strong>
         </a>
 
         {/* Hamburger — mobile only */}
@@ -83,8 +83,8 @@ export function Header() {
             </NavLink>
           ))}
         </div>
-        <a className="button drawer-reg-btn" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
-          Register now <strong>↗</strong>
+        <a className="button drawer-reg-btn" href="https://unstop.com/hackathons/hack-the-future-3o-tulas-university-1748989/case-submissions/856165" target="_blank" rel="noopener noreferrer">
+          Results <strong>↗</strong>
         </a>
       </nav>
     </>

@@ -341,7 +341,7 @@ export default function App() {
             <span><MapPin />{event.location}</span>
           </div>
           <div className="actions">
-            <a className="button" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register now <strong>→</strong></a>
+            <a className="button" href="https://unstop.com/hackathons/hack-the-future-3o-tulas-university-1748989/case-submissions/856165" target="_blank" rel="noopener noreferrer">Results <strong>→</strong></a>
             <a className="button button-outline" href="#about">Explore event</a>
           </div>
         </div>
